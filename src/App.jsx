@@ -5,7 +5,6 @@ const navItems = [
   { label: 'Home', href: '#home' },
   { label: 'Work', href: '#work' },
   { label: 'Services', href: '#services' },
-  { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -44,51 +43,60 @@ const stack = [
 
 const projectCards = [
   {
-    title: 'Marketplace Web Application',
+    title: "Marketplace Web Application",
     description:
-      'A marketplace web application where users can create accounts, manage profiles and publish listings.',
-    tech: ['HTML', 'CSS', 'JavaScript', 'Supabase', 'PostgreSQL'],
+      "A marketplace web application where users can create accounts, manage profiles and publish listings.",
+    tech: ["HTML", "CSS", "JavaScript", "Supabase", "PostgreSQL"],
     features: [
-      'Authentication',
-      'User profiles',
-      'Listings',
-      'Image uploads',
-      'Database integration',
-      'Responsive UI',
+      "Authentication",
+      "User profiles",
+      "Listings",
+      "Image uploads",
+      "Database integration",
+      "Responsive UI",
     ],
-    demo: 'https://example.com/marketplace-demo',
-    github: 'https://github.com/tony/marketplace-app',
-    visual: 'visual-one',
+    demo: "https://example.com/marketplace-demo",
+    github: "https://github.com/tony/marketplace-app",
+    image: "/project-screenshots/marketplace.png",
+    imageAlt: "Restaurant website project screenshot",
   },
   {
-    title: 'Restaurant Website',
+    title: "Restaurant Website",
     description:
-      'A modern responsive restaurant website concept designed to showcase the menu, location and customer contact options.',
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    features: ['Responsive design', 'Menu section', 'Gallery', 'Location', 'Contact/WhatsApp CTA'],
-    demo: 'https://example.com/restaurant-concept',
-    github: 'https://github.com/tony/restaurant-concept',
-    visual: 'visual-two',
-    badge: 'Concept Project',
+      "A modern responsive restaurant website concept designed to showcase the menu, location and customer contact options.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    features: [
+      "Responsive design",
+      "Menu section",
+      "Gallery",
+      "Location",
+      "Contact/WhatsApp CTA",
+    ],
+    demo: "https://example.com/restaurant-concept",
+    github: "https://github.com/tony/restaurant-concept",
+    image: "/project-screenshots/restaurant.png",
+    imageAlt: "Warm restaurant interior with tables and hanging lights",
+    badge: "Concept Project",
   },
   {
-    title: 'Coaching Institute Website',
+    title: "Coaching Institute Website",
     description:
-      'A professional website concept for a coaching institute with course information and admission enquiry functionality.',
-    tech: ['React', 'CSS', 'JavaScript'],
+      "A professional website concept for a coaching institute with course information and admission enquiry functionality.",
+    tech: ["React", "CSS", "JavaScript"],
     features: [
-      'Course listings',
-      'Admission enquiry',
-      'Faculty section',
-      'Results/testimonials section',
-      'Responsive design',
+      "Course listings",
+      "Admission enquiry",
+      "Faculty section",
+      "Results/testimonials section",
+      "Responsive design",
     ],
-    demo: 'https://example.com/coaching-institute-demo',
-    github: 'https://github.com/tony/coaching-website',
-    visual: 'visual-three',
-    badge: 'Concept Project',
+    demo: "",
+    github: "https://github.com/tony/coaching-website",
+    image: "/project-screenshots/coaching.png",
+    imageAlt: "Students collaborating around a table",
+    badge: "Concept Project",
   },
-]
+];
 
 const services = [
   {
@@ -135,7 +143,6 @@ const processSteps = [
 const initialForm = {
   name: '',
   email: '',
-  projectType: '',
   message: '',
 }
 
@@ -155,10 +162,6 @@ function App() {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailPattern.test(formData.email.trim())) {
       nextErrors.email = 'Please enter a valid email address.'
-    }
-
-    if (!formData.projectType.trim()) {
-      nextErrors.projectType = 'Please select a project type.'
     }
 
     if (!formData.message.trim() || formData.message.trim().length < 20) {
@@ -189,14 +192,14 @@ function App() {
   return (
     <div className="page-shell">
       <header className="topbar">
-        <div className="container nav-wrap">
-          <a className="brand" href="#home" aria-label="Tony home">
+        <div  className="container nav-wrap">
+          {/* <a className="brand" href="#home" aria-label="Tony home">
             <span className="brand-mark">T</span>
             <span className="brand-text">
               Tony
               <small>Full Stack Developer</small>
             </span>
-          </a>
+          </a> */}
 
           <button
             type="button"
@@ -224,6 +227,8 @@ function App() {
         <section className="hero container" id="home">
           <div className="hero-copy">
             <span className="status-pill">Available for freelance projects</span>
+            <p className="hero-name">VINEET KUMAR</p>
+            <p className="hero-role">Full Stack Developer</p>
             <h1>Building Websites That Help Businesses Grow.</h1>
             <p className="lead">
               I build fast, modern and responsive websites and web applications with a focus on
@@ -244,10 +249,10 @@ function App() {
                 <span>Role</span>
                 <strong>Full Stack Developer</strong>
               </div>
-              <div>
+              {/* <div>
                 <span>Location</span>
                 <strong>India</strong>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -322,19 +327,8 @@ function App() {
           <div className="project-list">
             {projectCards.map((project) => (
               <article key={project.title} className="project-card">
-                <div className={`project-visual ${project.visual}`} aria-hidden="true">
-                  <div className="visual-frame">
-                    <div className="visual-header">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
-                    <div className="visual-content">
-                      <div className="visual-bar short"></div>
-                      <div className="visual-bar"></div>
-                      <div className="visual-bar medium"></div>
-                    </div>
-                  </div>
+                <div className="project-visual">
+                  <img src={project.image} alt={project.imageAlt} />
                 </div>
 
                 <div className="project-body">
@@ -484,26 +478,6 @@ function App() {
                     aria-invalid={Boolean(errors.email)}
                   />
                   {errors.email ? <span className="field-error">{errors.email}</span> : null}
-                </label>
-              </div>
-
-              <div className="form-row">
-                <label htmlFor="projectType">
-                  Project type
-                  <select
-                    id="projectType"
-                    name="projectType"
-                    value={formData.projectType}
-                    onChange={handleChange}
-                    aria-invalid={Boolean(errors.projectType)}
-                  >
-                    <option value="">Select project type</option>
-                    <option value="Business Website">Business Website</option>
-                    <option value="Landing Page">Landing Page</option>
-                    <option value="Web Application">Web Application</option>
-                    <option value="Website Improvement">Website Improvement</option>
-                  </select>
-                  {errors.projectType ? <span className="field-error">{errors.projectType}</span> : null}
                 </label>
               </div>
 
