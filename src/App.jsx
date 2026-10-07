@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 
+const projectImage = (fileName) => `${import.meta.env.BASE_URL}project-screenshots/${fileName}`
+
 const navItems = [
   { label: 'Home', href: '#home' },
   { label: 'Work', href: '#work' },
@@ -30,11 +32,12 @@ const valueCards = [
 const stack = [
   'HTML5',
   'CSS3',
+  'TailwindCSS',
   'JavaScript',
   'React',
   'Node.js',
   'Express.js',
-  'PostgreSQL',
+  'MongoDB',
   'MySQL',
   'Supabase',
   'Git',
@@ -55,9 +58,9 @@ const projectCards = [
       "Database integration",
       "Responsive UI",
     ],
-    demo: "https://example.com/marketplace-demo",
-    github: "https://github.com/tony/marketplace-app",
-    image: "/project-screenshots/marketplace.png",
+    demo: "https://urukau-market-place.vercel.app/index.html",
+    github: "https://github.com/vineet-kumar-cs/market-place",
+    image: projectImage("marketplace.png"),
     imageAlt: "Restaurant website project screenshot",
   },
   {
@@ -72,9 +75,9 @@ const projectCards = [
       "Location",
       "Contact/WhatsApp CTA",
     ],
-    demo: "https://example.com/restaurant-concept",
-    github: "https://github.com/tony/restaurant-concept",
-    image: "/project-screenshots/restaurant.png",
+    demo: "https://vineet-kumar-cs.github.io/Restaurent-page/",
+    github: "https://github.com/vineet-kumar-cs/Restaurent-page",
+    image: projectImage("restaurant.png"),
     imageAlt: "Warm restaurant interior with tables and hanging lights",
     badge: "Concept Project",
   },
@@ -90,11 +93,28 @@ const projectCards = [
       "Results/testimonials section",
       "Responsive design",
     ],
-    demo: "",
-    github: "https://github.com/tony/coaching-website",
-    image: "/project-screenshots/coaching.png",
+    demo: "https://vineet-kumar-cs.github.io/coaching/",
+    github: "https://github.com/vineet-kumar-cs/coaching",
+    image: projectImage("coaching.png"),
     imageAlt: "Students collaborating around a table",
     badge: "Concept Project",
+  },
+  {
+    title: "CarePlus Clinic Website",
+    description:
+      "A welcoming clinic website introducing CarePlus Clinic and helping patients learn about care services and request an appointment.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    features: [
+      "Doctor profile",
+      "Medical services",
+      "Appointment request form",
+      "Patient reviews",
+      "Clinic contact details and hours",
+      "Frequently asked questions",
+    ],
+    demo: "https://careplus4u.netlify.app/",
+    image: projectImage("careplus.png"),
+    imageAlt: "CarePlus Clinic homepage screenshot",
   },
 ];
 
@@ -192,7 +212,7 @@ function App() {
   return (
     <div className="page-shell">
       <header className="topbar">
-        <div  className="container nav-wrap">
+        <div className="container nav-wrap">
           {/* <a className="brand" href="#home" aria-label="Tony home">
             <span className="brand-mark">T</span>
             <span className="brand-text">
@@ -213,9 +233,16 @@ function App() {
             <span></span>
           </button>
 
-          <nav className={`site-nav ${mobileOpen ? 'open' : ''}`} aria-label="Main navigation">
+          <nav
+            className={`site-nav ${mobileOpen ? "open" : ""}`}
+            aria-label="Main navigation"
+          >
             {navItems.map((item) => (
-              <a key={item.label} href={item.href} onClick={() => setMobileOpen(false)}>
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+              >
                 {item.label}
               </a>
             ))}
@@ -226,13 +253,15 @@ function App() {
       <main>
         <section className="hero container" id="home">
           <div className="hero-copy">
-            <span className="status-pill">Available for freelance projects</span>
+            <span className="status-pill">
+              Available for freelance projects
+            </span>
             <p className="hero-name">VINEET KUMAR</p>
             <p className="hero-role">Full Stack Developer</p>
             <h1>Building Websites That Help Businesses Grow.</h1>
             <p className="lead">
-              I build fast, modern and responsive websites and web applications with a focus on
-              performance, usability and clean design.
+              I build fast, modern and responsive websites and web applications
+              with a focus on performance, usability and clean design.
             </p>
 
             <div className="hero-actions">
@@ -244,7 +273,10 @@ function App() {
               </a>
             </div>
 
-            <div className="hero-meta" aria-label="Developer profile information">
+            <div
+              className="hero-meta"
+              aria-label="Developer profile information"
+            >
               <div>
                 <span>Role</span>
                 <strong>Full Stack Developer</strong>
@@ -268,13 +300,19 @@ function App() {
                   <span className="token-keyword">const</span>
                   <span className="token-name"> idea </span>
                   <span className="token-symbol">=</span>
-                  <span className="token-string"> &apos;business growth&apos; </span>
+                  <span className="token-string">
+                    {" "}
+                    &apos;business growth&apos;{" "}
+                  </span>
                 </div>
                 <div className="code-line">
                   <span className="token-keyword">const</span>
                   <span className="token-name"> build </span>
                   <span className="token-symbol">=</span>
-                  <span className="token-string"> &apos;responsive product&apos; </span>
+                  <span className="token-string">
+                    {" "}
+                    &apos;responsive product&apos;{" "}
+                  </span>
                 </div>
                 <div className="code-line muted">
                   <span className="token-keyword">return</span>
@@ -297,7 +335,9 @@ function App() {
         <section className="trust container" aria-labelledby="why-choose-me">
           <div className="section-heading narrow">
             <p className="eyebrow">Why work with me</p>
-            <h2 id="why-choose-me">Thoughtful development that fits real business needs.</h2>
+            <h2 id="why-choose-me">
+              Thoughtful development that fits real business needs.
+            </h2>
           </div>
 
           <div className="value-grid">
@@ -313,11 +353,17 @@ function App() {
           </div>
         </section>
 
-        <section className="projects container" id="work" aria-labelledby="projects-heading">
+        <section
+          className="projects container"
+          id="work"
+          aria-labelledby="projects-heading"
+        >
           <div className="section-heading split">
             <div>
               <p className="eyebrow">Selected work</p>
-              <h2 id="projects-heading">Web solutions built for usability and growth.</h2>
+              <h2 id="projects-heading">
+                Web solutions built for usability and growth.
+              </h2>
             </div>
             <a href="#contact" className="text-link">
               Discuss a project
@@ -334,7 +380,9 @@ function App() {
                 <div className="project-body">
                   <div className="project-topline">
                     <h3>{project.title}</h3>
-                    {project.badge ? <span className="project-badge">{project.badge}</span> : null}
+                    {project.badge ? (
+                      <span className="project-badge">{project.badge}</span>
+                    ) : null}
                   </div>
 
                   <p>{project.description}</p>
@@ -354,12 +402,24 @@ function App() {
                   </ul>
 
                   <div className="project-actions">
-                    <a href={project.demo} target="_blank" rel="noreferrer" className="primary-btn small-btn">
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="primary-btn small-btn"
+                    >
                       Live Demo
                     </a>
-                    <a href={project.github} target="_blank" rel="noreferrer" className="secondary-btn small-btn">
-                      GitHub
-                    </a>
+                    {project.github ? (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="secondary-btn small-btn"
+                      >
+                        GitHub
+                      </a>
+                    ) : null}
                   </div>
                 </div>
               </article>
@@ -367,7 +427,11 @@ function App() {
           </div>
         </section>
 
-        <section className="services container" id="services" aria-labelledby="services-heading">
+        <section
+          className="services container"
+          id="services"
+          aria-labelledby="services-heading"
+        >
           <div className="section-heading narrow">
             <p className="eyebrow">Services</p>
             <h2 id="services-heading">What I Can Build</h2>
@@ -386,10 +450,15 @@ function App() {
           </div>
         </section>
 
-        <section className="process container" aria-labelledby="process-heading">
+        <section
+          className="process container"
+          aria-labelledby="process-heading"
+        >
           <div className="section-heading narrow">
             <p className="eyebrow">Process</p>
-            <h2 id="process-heading">A clear, reliable workflow from idea to launch.</h2>
+            <h2 id="process-heading">
+              A clear, reliable workflow from idea to launch.
+            </h2>
           </div>
 
           <div className="process-grid">
@@ -403,18 +472,23 @@ function App() {
           </div>
         </section>
 
-        <section className="about container" id="about" aria-labelledby="about-heading">
+        <section
+          className="about container"
+          id="about"
+          aria-labelledby="about-heading"
+        >
           <div className="about-panel">
             <div className="about-copy">
               <p className="eyebrow">About me</p>
               <h2 id="about-heading">About Me</h2>
               <p>
-                I&apos;m a developer who enjoys turning ideas into practical digital products. I focus on
-                building responsive interfaces, useful web applications and clean full-stack solutions.
+                I&apos;m a developer who enjoys turning ideas into practical
+                digital products. I focus on building responsive interfaces,
+                useful web applications and clean full-stack solutions.
               </p>
               <ul className="about-list">
                 <li>Full Stack Developer</li>
-                <li>Based in India</li>
+                {/* <li>Based in India</li> */}
                 <li>Available for freelance work</li>
               </ul>
             </div>
@@ -432,19 +506,36 @@ function App() {
           </div>
         </section>
 
-        <section className="contact container" id="contact" aria-labelledby="contact-heading">
+        <section
+          className="contact container"
+          id="contact"
+          aria-labelledby="contact-heading"
+        >
           <div className="contact-content">
             <div className="contact-copy">
               <p className="eyebrow">Contact</p>
               <h2 id="contact-heading">Have a project in mind?</h2>
-              <p>Tell me what you&apos;re building and let&apos;s discuss how I can help.</p>
+              <p>
+                Tell me what you&apos;re building and let&apos;s discuss how I
+                can help.
+              </p>
 
               <div className="contact-links">
-                <a href="mailto:hello@tony-dev.com">hello@tony-dev.com</a>
-                <a href="https://github.com/tony" target="_blank" rel="noreferrer">
+                <a href="vineetkumar299792@gmail.com">
+                  vineetkumar299792@gmail.com
+                </a>
+                <a
+                  href="https://github.com/vineet-kumar-cs"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   GitHub
                 </a>
-                <a href="https://www.linkedin.com/in/tony-dev" target="_blank" rel="noreferrer">
+                <a
+                  href="https://www.linkedin.com/in/vineet-kumar-ai/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   LinkedIn
                 </a>
               </div>
@@ -462,7 +553,9 @@ function App() {
                     onChange={handleChange}
                     aria-invalid={Boolean(errors.name)}
                   />
-                  {errors.name ? <span className="field-error">{errors.name}</span> : null}
+                  {errors.name ? (
+                    <span className="field-error">{errors.name}</span>
+                  ) : null}
                 </label>
               </div>
 
@@ -477,7 +570,9 @@ function App() {
                     onChange={handleChange}
                     aria-invalid={Boolean(errors.email)}
                   />
-                  {errors.email ? <span className="field-error">{errors.email}</span> : null}
+                  {errors.email ? (
+                    <span className="field-error">{errors.email}</span>
+                  ) : null}
                 </label>
               </div>
 
@@ -492,7 +587,9 @@ function App() {
                     onChange={handleChange}
                     aria-invalid={Boolean(errors.message)}
                   />
-                  {errors.message ? <span className="field-error">{errors.message}</span> : null}
+                  {errors.message ? (
+                    <span className="field-error">{errors.message}</span>
+                  ) : null}
                 </label>
               </div>
 
@@ -500,13 +597,18 @@ function App() {
                 <button type="submit" className="primary-btn form-btn">
                   Start a Project
                 </button>
-                <a href="mailto:hello@tony-dev.com" className="secondary-btn form-btn">
+                <a
+                  href="mailto:hello@tony-dev.com"
+                  className="secondary-btn form-btn"
+                >
                   Email Me
                 </a>
               </div>
 
               {submitted ? (
-                <p className="form-success">Thanks! Your message looks ready to send.</p>
+                <p className="form-success">
+                  Thanks! Your message looks ready to send.
+                </p>
               ) : null}
             </form>
           </div>
@@ -516,7 +618,7 @@ function App() {
       <footer className="site-footer">
         <div className="container footer-wrap">
           <div>
-            <h3>Tony</h3>
+            <h3>VINEET</h3>
             <p>Full Stack Developer</p>
           </div>
 
@@ -529,22 +631,30 @@ function App() {
           </nav>
 
           <div className="footer-links">
-            <a href="https://github.com/tony" target="_blank" rel="noreferrer">
+            <a
+              href="https://github.com/vineet-kumar-cs"
+              target="_blank"
+              rel="noreferrer"
+            >
               GitHub
             </a>
-            <a href="https://www.linkedin.com/in/tony-dev" target="_blank" rel="noreferrer">
+            <a
+              href="https://www.linkedin.com/in/vineet-kumar-ai/"
+              target="_blank"
+              rel="noreferrer"
+            >
               LinkedIn
             </a>
-            <a href="mailto:hello@tony-dev.com">Email</a>
+            <a href="vineetkumar299792@gmail.com">Email</a>
           </div>
         </div>
 
         <div className="container footer-bottom">
-          <p>© 2026 Tony. All rights reserved.</p>
+          <p>© 2026 vineet. All rights reserved.</p>
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
 export default App
