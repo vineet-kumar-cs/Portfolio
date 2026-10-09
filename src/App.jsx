@@ -42,6 +42,7 @@ const stack = [
   'Supabase',
   'Git',
   'GitHub',
+  'REST APIs'
 ]
 
 const projectCards = [
